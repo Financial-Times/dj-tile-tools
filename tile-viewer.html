@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <title>Tile viewer</title>
+	    <meta charset="utf-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.x/dist/leaflet.css"/>
+        <script src="https://unpkg.com/leaflet@1.4.x/dist/leaflet.js"></script>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script>
+            const path = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+            const z = 19;
+            const x = 36.34;
+            const y = 43.13;
+	        const tiles = L.tileLayer(path, { minZoom: 0, maxZoom: z });
+            const mapElement = document.querySelector('#map');
+            const map = L.map(mapElement, { attributionControl: false })
+                  .setView([x, y], z)
+                  .addLayer(tiles);
+        </script>
+        <style>
+            body {
+                margin: 0;
+            }
+            #map {
+                width: 100vw;
+                height: 100vh;
+            }
+        </style>
+    </body>
+</html>
