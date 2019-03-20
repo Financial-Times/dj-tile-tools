@@ -14,7 +14,12 @@
             const z = 19;
             const x = 36.34;
             const y = 43.13;
-	        const tiles = L.tileLayer(path, { minZoom: 0, maxZoom: z });
+	        const tiles = L.tileLayer(path, {
+                maxNativeZoom: z,
+                minNativeZoom: z,
+                maxZoom: z,
+                minZoom: z - 2
+            });
             const mapElement = document.querySelector('#map');
             const map = L.map(mapElement, { attributionControl: false })
                   .setView([x, y], z)
@@ -27,6 +32,10 @@
             #map {
                 width: 100vw;
                 height: 100vh;
+            }
+
+            #map .leaflet-tile {
+                border: 1px solid red;
             }
         </style>
     </body>

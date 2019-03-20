@@ -32,7 +32,7 @@ do
         echo "Downloading $tilename..."
         location=$(echo $path | sed "s/{x}/$x/" | sed "s/{y}/$y/" | sed "s/{z}/$z/")
         echo $location >> "$tiles/required.txt"
-        curl -sS $location -o $tilename &
+        curl -sSL $location -o $tilename &
     done
     wait
 done
